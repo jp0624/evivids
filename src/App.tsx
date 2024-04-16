@@ -1,10 +1,12 @@
+import eLogo from '/e-white.svg'
 import './App.css'
 
 function App() {
 	return (
 		<>
-			<h1>eVivids</h1>
-			<p className='read-the-docs'>Coming Soon</p>
+			<div>
+				<img src={eLogo} className='logo' alt='Vite logo' />
+			</div>
 		</>
 	)
 }
