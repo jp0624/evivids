@@ -4,12 +4,12 @@
 	font-weight: 400;
 
 	color-scheme: light dark;
-	color: rgba(255, 255, 255, 0.87);
+	color: rgba(255, 255, 255, 1);
 
-	background: rgb(0, 34, 216);
+	background: rgb(21, 46, 255, 1);
 	background: linear-gradient(
 		180deg,
-		rgba(0, 34, 216, 1) 0%,
+		rgba(21, 46, 255, 1) 0%,
 		rgba(0, 26, 167, 1) 100%
 	);
 

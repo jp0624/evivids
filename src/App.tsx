@@ -1,4 +1,4 @@
-import eLogo from '/e-white.svg'
+import eLogo from '/evivids-white.svg'
 import './App.css'
 
 function App() {
