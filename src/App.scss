@@ -60,15 +60,21 @@
 								text-align: left;
 							}
 							input {
+								color: #666;
+								padding: 0 0.5rem;
 								border: none;
 								outline: none;
 								background-color: #fff;
 								border-radius: 0.25rem;
-								height: 2rem;
+								height: 2.5rem;
 							}
 							button {
 								background-color: #0136ff;
 								margin: 1rem 0;
+								transition: all 250ms ease;
+								&:hover {
+									background-color: #727ca2;
+								}
 							}
 						}
 					}
