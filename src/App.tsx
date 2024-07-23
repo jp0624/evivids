@@ -1,11 +1,13 @@
-import eLogo from '/evivids-white.svg'
-import './App.css'
+import eLogo from '/logos/evivids-white.svg'
+import './App.scss'
 
 function App() {
 	return (
 		<>
-			<div>
-				<img src={eLogo} className='logo' alt='Vite logo' />
+			<div className='site-container'>
+				<section className='section-main'>
+					<img src={eLogo} className='logo' alt='Vite logo' />
+				</section>
 			</div>
 		</>
 	)
