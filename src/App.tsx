@@ -147,10 +147,7 @@ function App() {
 										</div>
 										<div className={'btn-container'}>
 											{formPage > 1 && (
-												<button
-													onClick={() => setFormPageChage(formPage - 1)}
-													className='button-back'
-												>
+												<button onClick={() => setFormPageChage(formPage - 1)}>
 													Back
 												</button>
 											)}
@@ -163,13 +160,7 @@ function App() {
 													Submit
 												</button>
 											) : (
-												<button
-													onClick={handleSubmit}
-													className={loading ? 'loading' : ''}
-													disabled={loading}
-												>
-													{formPage < formPages ? 'Next >' : 'Submit'}
-												</button>
+												<button onClick={handleSubmit}>Next</button>
 											)}
 										</div>
 									</>
