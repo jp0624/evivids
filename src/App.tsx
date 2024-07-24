@@ -38,12 +38,12 @@ function App() {
 			return setFormPageChage(formPage + 1)
 		}
 		console.log('attempting to send email')
-		const serviceId = 'service_a3zebsm'
-		const templateId = 'template_rdijotw'
-		const publicKey = 'krZZbs8liC6va3Lul'
-		// const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
-		// const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-		// const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+		// const serviceId = 'service_a3zebsm'
+		// const templateId = 'template_rdijotw'
+		// const publicKey = 'krZZbs8liC6va3Lul'
+		const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+		const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+		const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 		try {
 			setLoading(true)
 			await emailjs.send(
