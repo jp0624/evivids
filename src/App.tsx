@@ -89,7 +89,7 @@ function App() {
 									</>
 								) : (
 									<>
-										<h2>Get in touch</h2>
+										<h2>Get in touch{import.meta.env.VITE_TEST}</h2>
 										<div className={`form-pages showPage-${formPage}`}>
 											<div
 												className={`page page-${
