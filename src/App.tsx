@@ -12,15 +12,29 @@ function App() {
 	const messageRef = useRef<HTMLTextAreaElement>()
 
 	const [loading, setLoading] = useState(false)
+	const [sendError, setSendError] = useState(false)
 
 	const [messageSent, setMessageSent] = useState(false)
 	const [formPage, setFormPageChage] = useState(1)
 	const formPages = 2
 
+	// const checkRequired = (page) => {
+	// 	return true
+	// }
+	// const showErrors = (page) => {
+	// 	return false
+	// }
 	const handleSubmit = async (e: { preventDefault: () => void }) => {
 		e.preventDefault()
 		console.log('formPage: ', formPage)
 		if (formPage < formPages) {
+			// const gotoNext = checkRequired(formPage)
+
+			// if(gotoNext) {
+			// 	return setFormPageChage(formPage + 1)
+			// } else {
+			// 	return showErrors(formPage)
+			// }
 			return setFormPageChage(formPage + 1)
 		}
 		console.log('attempting to send email')
@@ -35,6 +49,7 @@ function App() {
 					first_name: firstNameRef.current!.value,
 					last_name: lastNameRef.current!.value,
 					recipient: emailRef.current!.value,
+					your_message: messageRef.current!.value,
 				},
 				{
 					publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
@@ -42,7 +57,7 @@ function App() {
 			)
 			setMessageSent(true)
 		} catch (error) {
-			console.log(error)
+			setSendError(true)
 		} finally {
 			setLoading(false)
 		}
@@ -58,10 +73,19 @@ function App() {
 						</li>
 						<li>
 							<form className='form-getintouch' onSubmit={handleSubmit}>
-								{messageSent ? (
+								{messageSent || sendError ? (
 									<>
-										<h2>Thank you!</h2>
-										<p>We will be in touch shortly</p>
+										{messageSent ? (
+											<>
+												<h2>Thank you!</h2>
+												<p>We will be in touch shortly</p>
+											</>
+										) : (
+											<>
+												<h2>Error sending message</h2>
+												<p>Something went wrong</p>
+											</>
+										)}
 									</>
 								) : (
 									<>
@@ -71,6 +95,7 @@ function App() {
 												className={`page page-${
 													formPage === 1 ? 'show' : 'hide'
 												}`}
+												id='page-1'
 											>
 												<label htmlFor='first-name'>First Name</label>
 												<input
@@ -90,6 +115,7 @@ function App() {
 													type='text'
 													name='last-name'
 													id='last-name'
+													required
 												/>
 												<label htmlFor='email'>Email</label>
 												<input
@@ -106,6 +132,7 @@ function App() {
 												className={`page page-${
 													formPage === 2 ? 'show' : 'hide'
 												}`}
+												id='page-2'
 											>
 												<label htmlFor='your-message'>Your Message</label>
 												<textarea
@@ -114,16 +141,37 @@ function App() {
 													}
 													name='your-message'
 													id='your-message'
+													required
 												></textarea>
 											</div>
 										</div>
-										<button
-											type='submit'
-											className={loading ? 'loading' : ''}
-											disabled={loading}
-										>
-											{formPage < formPages ? 'Next >' : 'Submit'}
-										</button>
+										<div className={'btn-container'}>
+											{formPage > 1 && (
+												<button
+													onClick={() => setFormPageChage(formPage - 1)}
+													className='button-back'
+												>
+													Back
+												</button>
+											)}
+											{formPage === formPages ? (
+												<button
+													type='submit'
+													className={loading ? 'loading' : ''}
+													disabled={loading}
+												>
+													Submit
+												</button>
+											) : (
+												<button
+													onClick={handleSubmit}
+													className={loading ? 'loading' : ''}
+													disabled={loading}
+												>
+													{formPage < formPages ? 'Next >' : 'Submit'}
+												</button>
+											)}
+										</div>
 									</>
 								)}
 							</form>
